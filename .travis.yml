@@ -1,8 +1,17 @@
 language: python
+
 python:
   - "3.6"
+
 install:
   - pip install --upgrade pip
   - pip install -r requirements.txt
+  - pip install Sphinx>=1.5.1
+  - pip install travis-sphinx>=1.4.1
+
 script:
   - python manage.py test -v2 -k
+  - travis-sphinx build
+
+after_success:
+  - travis-sphinx deploy
