@@ -106,7 +106,11 @@ AUTH_PASSWORD_VALIDATORS = [
 
 
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+#
+# WARNING:
+# This setting bears a potential security issue (depending on the proxy configuration).
+# Check whether this is needed on Heroku, and activate only on as-need basis!
+# SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 
 # Internationalization
