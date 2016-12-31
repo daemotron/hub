@@ -27,8 +27,7 @@ import sphinx_rtd_theme
 # sys.path.insert(0, os.path.abspath('.'))
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "_ext")))
 hub_path = os.path.dirname(os.path.dirname(os.path.dirname(os.path.realpath(__file__))))
-if os.path.exists(hub_path + '/hub/__init__.py'):
-    if os.path.isfile(hub_path + '/hub/__init__.py'):
+if os.path.exists(hub_path + '/hub/__init__.py') and os.path.isfile(hub_path + '/hub/__init__.py'):
         sys.path.insert(0, hub_path)
 
 # Django settings configuration
