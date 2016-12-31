@@ -9,3 +9,13 @@ Airline Group.
 
 The Stormrose Hub (*Hub* in short) is a web application based
 on the [Django](https://www.djangoproject.com/) Framework.
+
+### Documentation
+
+The documentation for The Stormrose Hub is perpetually
+built and published on GitHub pages:
+
+Please consult this documentation available at
+https://stormrose-va.github.io/hub/
+before creating any issues or contacting the Stormrose team
+for support.
