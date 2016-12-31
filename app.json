@@ -1,0 +1,19 @@
+{
+  "name": "The Stormrose Hub",
+  "description": "Core Application of the Stormrose Virtual Airline Group",
+  "image": "heroku/python",
+  "repository": "https://github.com/stormrose-va/hub",
+  "scripts": {},
+  "env": {
+    "DJANGO_SETTINGS_MODULE": {
+      "required": true
+    },
+    "SECRET_KEY": {
+      "required": true
+    }
+  },
+  "formation": {},
+  "keywords": ["python", "django" ],
+  "addons": [ "heroku-postgresql" ],
+  "buildpacks": []
+}
