@@ -5,6 +5,12 @@ This documentation is primarily a source for developers contributing to The Stor
 maintaining it. Furthermore, also rather specific roles such as division managers will find a certain level of coverage
 by this documentation. However, this documentation does not cover general end user guidance.
 
+.. note::
+
+   This documentation is perpetually updated from the project's central :ref:`git repository's <blessed-repository>`
+   master branch. To ensure you work with the latest version available, please make sure to access this documentation
+   exclusively at https://stormrose-va.github.io/hub/
+
 
 How the documentation is organised
 ----------------------------------
