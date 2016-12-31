@@ -31,7 +31,7 @@ if os.path.exists(hub_path + '/hub/__init__.py') and os.path.isfile(hub_path + '
         sys.path.insert(0, hub_path)
 
 # Django settings configuration
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "hub.settings")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "hub.settings.production")
 django.setup()
 
 # -- General configuration ------------------------------------------------
