@@ -6,9 +6,9 @@ python:
 install:
   - pip install --upgrade pip
   - pip install -r requirements.txt
-  - pip install Sphinx>=1.5.1
-  - pip install sphinx-rtd-theme>=0.1.9
-  - pip install travis-sphinx>=1.4.1
+  - pip install Sphinx==1.6.5
+  - pip install sphinx-rtd-theme==0.2.4
+  - pip install travis-sphinx==2.0.1
 
 script:
   - python manage.py test -v2 -k
