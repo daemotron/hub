@@ -11,13 +11,6 @@ env:
 install:
   - pip install --upgrade pip
   - pip install -r requirements.txt
-  - pip install Sphinx==1.6.5
-  - pip install sphinx-rtd-theme==0.2.4
-  - pip install travis-sphinx==2.0.1
 
 script:
   - python manage.py test -v2 -k
-  - travis-sphinx --branches=master build
-
-after_success:
-  - travis-sphinx --branches=master deploy
