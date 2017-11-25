@@ -3,16 +3,14 @@ language: python
 python:
   - "3.6"
 
+env:
+  global:
+    - SECRET_KEY=abcdefghijklmnopqrstuvwxyz0123456789
+    - DATABASE_URL=sqlite:///db.sqlite3
+
 install:
   - pip install --upgrade pip
   - pip install -r requirements.txt
-  - pip install Sphinx>=1.5.1
-  - pip install sphinx-rtd-theme>=0.1.9
-  - pip install travis-sphinx>=1.4.1
 
 script:
   - python manage.py test -v2 -k
-  - travis-sphinx --branches=master build
-
-after_success:
-  - travis-sphinx --branches=master deploy
