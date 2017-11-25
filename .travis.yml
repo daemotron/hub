@@ -4,8 +4,9 @@ python:
   - "3.6"
 
 env:
-  - SECRET_KEY=abcdefghijklmnopqrstuvwxyz0123456789
-  - DATABASE_URL=sqlite:///db.sqlite3
+  global:
+    - SECRET_KEY=abcdefghijklmnopqrstuvwxyz0123456789
+    - DATABASE_URL=sqlite:///db.sqlite3
 
 install:
   - pip install --upgrade pip
