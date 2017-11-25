@@ -1,0 +1,51 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Stormrose Hub">
+    <meta name="author" content="The Stormrose Team">
+    <meta name="keyword" content="Virtual Airline,Ground Operations,Consulting,FSEconomy">
+
+    <!-- Custom Meta -->
+    {% block meta %}{% endblock %}
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{% static "img/favicon.png" %}">
+
+    <!-- Title -->
+    <title>{% block site_title %}{% endblock %}</title>
+
+    <!-- Icons -->
+    <link href="{% static "css/font-awesome.min.css" %}" rel="stylesheet">
+    <link href="{% static "css/simple-line-icons.css" %}" rel="stylesheet">
+
+    <!-- Main styles for this application -->
+    <link href="{% static "css/style.css" %}" rel="stylesheet">
+    <link href="{% static "css/stormrose.css" %}" rel="stylesheet">
+
+    <!-- Custom JavaScript in the head section -->
+    {% block header_script %}{% endblock %}
+
+</head>
+
+<body class="{% block body_class %}{% endblock %}">
+
+    {% block body_content %}{% endblock %}
+
+    <!-- Bootstrap and necessary plugins -->
+    <script src="{% static "js/jquery.min.js" %}"></script>
+    <script src="{% static "js/popper.min.js" %}"></script>
+    <script src="{% static "js/alert.js" %}"></script>
+    <script src="{% static "js/bootstrap.min.js" %}"></script>
+    <script src="{% static "js/pace.min.js" %}"></script>
+
+    <!-- CoreUI main scripts -->
+    <script src="{% static "js/app.js" %}"></script>
+
+    <!-- Custom JavaScript in the body section -->
+    {% block body_script %}{% endblock %}
+
+</body>
