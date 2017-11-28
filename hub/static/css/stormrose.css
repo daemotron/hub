@@ -1,0 +1,29 @@
+.bg-primary {
+	background-color: #00205B !important;
+}
+
+.card.bg-primary {
+	/* border-color: #00205B; */
+	border-color: #C2CFD6;
+}
+
+.btn-primary {
+	background-color: #00205B;
+	border-color: #00205B;
+}
+
+.btn-link {
+	color: #00205B;
+}
+
+.app-header.navbar .navbar-brand {
+	background-size: 125px;
+}
+
+a {
+	color: #00205B;
+}
+
+a:hover {
+	color: #00205B;
+}

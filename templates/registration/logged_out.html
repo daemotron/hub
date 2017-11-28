@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block site_title %}Logout{% endblock %}
+
+{% block body_class %}app flex-row align-items-center{% endblock %}
+
+{% block body_content %}
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card-group">
+                    <div class="card p-4">
+                        <div class="card-body">
+                            <h1>Goodbye</h1>
+                            <p>
+                                Thank you for using Stormrose. Your session has been closed, so you can now
+                                safely close your browser window.
+                            </p>
+                            <p>&nbsp;</p>
+                            <p>
+                                Want to stay? Take me back to the
+                                <a href="{% url 'dashboard:index' %}">
+                                    Dashboard <span class="fa fa-arrow-circle-right"></span>
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="card text-white bg-primary py-5 d-md-down-none" style="width:44%">
+                        <div class="card-body text-center">
+                            <div>
+                                <img src="{% static "img/logo_white_notext.svg" %}" width="200" height="200">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block site_title %}Stormrose Dashboard{% endblock %}
+
+{% block body_class %}app header-fixed sidebar-minimized aside-menu-fixed aside-menu-hidden{% endblock %}
+
+{% block body_content %}
+    <header class="app-header navbar">
+        <button class="navbar-toggler mobile-sidebar-toggler d-lg-none mr-auto" type="button">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="#"></a>
+        <button class="navbar-toggler sidebar-toggler d-md-down-none" type="button">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <ul class="nav navbar-nav ml-auto">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                    <img src="{% static "img/avatar.png" %}" class="img-avatar">
+                </a>
+                <div class="dropdown-menu dropdown-menu-right">
+                    <a class="dropdown-item" href="#"><i class="fa fa-user"></i> Profile</a>
+                    <a class="dropdown-item" href="#"><i class="fa fa-wrench"></i> Settings</a>
+                    <a class="dropdown-item" href="{% url 'logout' %}"><i class="fa fa-lock"></i> Logout</a>
+                </div>
+            </li>
+        </ul>
+        <span style="width: 15px"></span>
+    </header>
+
+    <div class="app-body">
+        <div class="sidebar">
+            <nav class="sidebar-nav">
+                <ul class="nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <i class="icon-globe"></i> Overview
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <i class="icon-paper-plane"></i> Fleet
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <i class="icon-home"></i> Real Estate
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <i class="icon-share"></i> Routes
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <i class="icon-info"></i> Financial Statement
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <i class="icon-chart"></i> Financial Analysis
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <i class="icon-notebook"></i> Ledger
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <i class="icon-cloud-download"></i> Data
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <i class="icon-settings"></i> Admin
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <button class="sidebar-minimizer brand-minimizer" type="button"></button>
+        </div>
+
+        <!-- Main content -->
+        <main class="main">
+
+            <div class="container-fluid">
+
+                <div class="animated fadeIn">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card" style="margin-top: 1.5rem;">
+                                <div class="card-header">
+                                    <strong>{% block dashboard_heading %}{% endblock %}</strong>
+                                </div>
+                                <div class="card-body">
+                                    {% block dashboard_content %}{% endblock %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- /.conainer-fluid -->
+        </main>
+
+    </div>
+
+{% endblock %}
