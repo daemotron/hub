@@ -69,7 +69,13 @@ tramp
 # Rope
 .ropeproject
 
+# Virtual environment
+.venv/
+_venv/
+venv/
+
 # PyCharm
+.vscode/
 .idea/
 
 # Mac
