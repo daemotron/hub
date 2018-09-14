@@ -1,0 +1,7 @@
+{
+  "1": {
+    "icon": "fa fa-home",
+    "label": "Home",
+    "url": "pages:index"
+  }
+}

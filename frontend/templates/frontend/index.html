@@ -1,0 +1,83 @@
+{% extends "frontend/main.html" %}
+{% load humanize %}
+{% load markdown %}
+
+{% block main_content %}
+            <!-- Main jumbotron for a primary marketing message or call to action -->
+            <div class="jumbotron jumbotron-fluid">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-7">
+                            <!--<img src="/assets/img/transparent.png" height="140px">-->
+                        </div>
+                        <div class="col-md-5 ml-auto">
+                            <blockquote class="blockquote p-5">
+                                <p>
+                                    <i class="fa fa-quote-left" aria-hidden="true"></i>
+                                    The most beautiful dream that has haunted the heart of
+                                    man since Icarus is today reality.
+                                </p>
+                                <footer class="blockquote-footer">
+                                    Louis Blériot
+                                </footer>
+                            </blockquote>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container">
+                <!-- Example row of columns -->
+                <div class="row">
+                    <div class="col-md-8">
+                        <h2>Welcome to Stormrose</h2>
+                        <p>
+                            At Stormrose, we believe that it&rsquo;s not just what we do, but how we do it that counts.
+                            We are convinced that our customers, stakeholders and the wider FSEconomy community we are
+                            interacting with not only ask us to deliver our services, or pay for their work,
+                            but to sustainably contribute to the FSEconomy universe, and act with respect and integrity.
+                        </p>
+                        <div class="py-4"></div>
+                        {% for item in front_item %}
+                            <div class="row">
+                                <div class="col-md-3 align-middle">
+                                    <button type="button" class="btn btn-{{ item.colour }} btn-circle btn-xl">
+                                        <i class="fa fa-{{ item.icon }}"></i>
+                                    </button>
+                                </div>
+                                <div class="col-md-9 align-middle">
+                                    <p class="card-text">
+                                        {{ item.text|markdown }}
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="py-4"></div>
+                        {% endfor %}
+                        <div class="py-4"></div>
+                    </div>
+                    <div class="col-md-4">
+                        <h2>News</h2>
+                        {% for item in news %}
+                            <div class="card mb-3">
+                                <!--<div class="card-header text-white bg-tertiary">Air Passage</div>-->
+                                <div class="card-body">
+                                    <p class="card-text">
+                                        {{ item.text|markdown }}
+                                    </p>
+                                </div>
+                                <div class="card-footer text-right small text-tertiary">
+                                    <i class="fa fa-clock-o"></i> {{ item.date|timesince }}
+                                </div>
+                            </div>
+                        {% empty %}
+                            <p>Currently, we don&rsquo;t have any news to share. But rest assured this is only for the
+                            moment, so please feel free to check back later!</p>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <hr>
+
+            </div> <!-- /container -->
+
+{% endblock %}

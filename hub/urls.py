@@ -18,8 +18,10 @@ from django.contrib import admin
 from django.views.generic.base import RedirectView
 
 urlpatterns = [
-    path('', RedirectView.as_view(url='/dashboard/')),
+    path('', RedirectView.as_view(url='/pages/')),
     path('admin/', admin.site.urls),
     path('dashboard/', include('dashboard.urls')),
+    path('pages/', include('frontend.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
+    path('markdownx/', include('markdownx.urls')),
 ]
