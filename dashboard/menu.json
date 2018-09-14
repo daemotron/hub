@@ -1,0 +1,17 @@
+{
+  "1": {
+    "icon": "icon-globe",
+    "label": "Overview",
+    "url": "dashboard:index"
+  },
+  "2": {
+    "icon": "icon-paper-plane",
+    "label": "Fleet",
+    "url": "dashboard:index"
+  },
+  "3": {
+    "icon": "icon-settings",
+    "label": "Admin",
+    "url": "dashboard:settings"
+  }
+}

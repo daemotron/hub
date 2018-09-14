@@ -9,4 +9,6 @@ app_name = 'pages'
 urlpatterns = [
     path('', RedirectView.as_view(url='home/')),
     path('home/', views.IndexView.as_view(), name='index'),
+    path('contact/', views.contact, name='contact'),
+    path('contact/sent/', views.SentView.as_view(), name='sent'),
 ]
