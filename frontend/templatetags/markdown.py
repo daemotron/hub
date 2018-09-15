@@ -9,3 +9,8 @@ register = template.Library()
 @register.filter()
 def markdown(value, arg=None):
     return mark_safe(markdownify(value))
+
+
+@register.filter()
+def markdown_card(value, arg=None):
+    return mark_safe(markdownify(value).replace('<p>', '<p class="card-text">'))

@@ -65,9 +65,7 @@
                             <div class="card mb-3">
                                 <!--<div class="card-header text-white bg-tertiary">Air Passage</div>-->
                                 <div class="card-body">
-                                    <p class="card-text">
-                                        {{ item.text|markdown }}
-                                    </p>
+                                    {{ item.text|markdown_card }}
                                 </div>
                                 <div class="card-footer text-right small text-tertiary">
                                     <i class="fa fa-clock-o"></i> {{ item.date|timesince }}
