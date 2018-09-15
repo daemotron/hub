@@ -48,6 +48,7 @@ local.env
 # Django stuff:
 *.mo
 *.pot
+hub/staticfiles/*
 
 # Eclipse
 .project
