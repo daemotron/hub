@@ -28,6 +28,14 @@ class SentView(TemplateView):
     template_name = 'frontend/sent.html'
 
 
+class PrivacyView(TemplateView):
+    template_name = 'frontend/privacy.html'
+
+
+class LegalView(TemplateView):
+    template_name = 'frontend/legal.html'
+
+
 def contact(request):
     if request.method == 'POST':
         form = forms.ContactForm(request.POST)

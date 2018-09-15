@@ -13,7 +13,7 @@
     <body>
 
         <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="{% url 'pages:index' %}">
                 <img src="{% static "assets/img/Logo_White.png" %}" height="30" class="d-inline-block align-top" alt="">
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMain" aria-controls="navbarMain" aria-expanded="false" aria-label="Toggle navigation">
@@ -36,6 +36,8 @@
                 &copy; {% now 'Y' %} Jesco &ldquo;daemotron&rdquo; Freund.
                 Stormrose is a virtual flying group based on <a href="http://www.fseconomy.net/">FSEconomy</a>.
                 It is no real world business, but only a leisure time project.
+                <a href="{% url 'pages:legal' %}">Legal Disclaimer</a> |
+                <a href="{% url 'pages:privacy' %}">Privacy Policy</a>
             </p>
         </footer>
 
