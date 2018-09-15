@@ -34,7 +34,7 @@ INSTALLED_APPS = [
     'dashboard',
     'frontend',
     'settings',
-    'jsoneditor',
+    'captcha',
     'markdownx',
     'django.contrib.admin',
     'django.contrib.auth',

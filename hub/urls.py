@@ -24,4 +24,5 @@ urlpatterns = [
     path('pages/', include('frontend.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
     path('markdownx/', include('markdownx.urls')),
+    path('captcha/', include('captcha.urls')),
 ]
