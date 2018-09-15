@@ -1,0 +1,22 @@
+{% for key, item in menu.items %}
+    {% if item.url %}
+        <li class="nav-item">
+            <a class="nav-link" href="{% url item.url %}"><i class="{{ item.icon }}"></i> {{ item.label }}</a>
+        </li>
+    {% elif item.sub %}
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="dropdown{{ forloop.counter }}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="{{ item.icon }}"></i> {{ item.label }}
+            </a>
+            <div class="dropdown-menu" aria-labelledby="dropdown{{ forloop.counter }}">
+                {% for subkey, subitem in item.sub.items %}
+                    {% if subitem.url %}
+                        <a class="dropdown-item" href="{% url subitem.url %}">{{ subitem.label }}</a>
+                    {% elif subitem.sep %}
+                        <div class="dropdown-divider"></div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </li>
+    {% endif %}
+{% endfor %}

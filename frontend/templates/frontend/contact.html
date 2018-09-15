@@ -1,0 +1,74 @@
+{% extends "frontend/page.html" %}
+{% load static %}
+
+{% block page_title %}Contact Us{% endblock %}
+
+{% block page_content %}
+<form action="{% url 'pages:contact' %}" method="post">
+    {% csrf_token %}
+    {% if form.non_field_errors %}
+        <div class="alert alert-warning" role="alert">
+            {% for error in form.non_field_errors %}
+                <strong>{{ error|escape }}</strong><br>
+            {% endfor %}
+        </div>
+    {% endif %}
+    <div class="form-group">
+        <!--<label for="{{ form.name.id_for_label }}">Your name:</label>-->
+        {% if form.name.errors %}
+            <div class="alert alert-danger" role="alert">
+                {{ form.name.errors }}
+            </div>
+        {% endif %}
+        {{ form.name }}
+        <small id="nameHelpBlock" class="form-text text-muted">
+            Please leave your real name, so we can get back to you properly.
+        </small>
+    </div>
+    <div class="form-group">
+        <!--<label for="{{ form.email.id_for_label }}">Your email address:</label>-->
+        {% if form.email.errors %}
+            <div class="alert alert-warning" role="alert">
+                {% for error in form.email.errors %}
+                    <strong>{{ error|escape }}</strong><br>
+                {% endfor %}
+            </div>
+        {% endif %}
+        {{ form.email }}
+        <small id="emailHelpBlock" class="form-text text-muted">
+            Your email address is mandatory &ndash; otherwise we won&rsquo;t be able to answer to your message.
+        </small>
+    </div>
+    <div class="form-group">
+        <!--<label for="{{ form.message.id_for_label }}">Your message:</label>-->
+        {% if form.message.errors %}
+            <div class="alert alert-warning" role="alert">
+                {% for error in form.message.errors %}
+                    <strong>{{ error|escape }}</strong><br>
+                {% endfor %}
+            </div>
+        {% endif %}
+        {{ form.message }}
+        <small id="messageHelpBlock" class="form-text text-muted">
+            You may use <a href="https://daringfireball.net/projects/markdown/syntax#span" target="_blank">Markdown</a>
+            syntax (span elements only) to format your message.
+        </small>
+    </div>
+    <div class="form-group">
+        {% if form.captcha.errors %}
+            <div class="alert alert-warning" role="alert">
+                {% for error in form.captcha.errors %}
+                    <strong>{{ error|escape }}</strong><br>
+                {% endfor %}
+            </div>
+        {% endif %}
+        {{ form.captcha }}
+    </div>
+    <div class="alert alert-info" role="alert">
+        <strong>Please note:</strong>
+            Any information shared via this form is subject to our
+            <a href="{% url 'pages:privacy' %}">Privacy Policy</a>.
+    </div>
+    <input type="submit" class="btn btn-primary" value="Submit">
+</form>
+{% endblock %}
