@@ -28,3 +28,11 @@ class NewsItem(models.Model):
 
     class Meta:
         ordering = ['-date']
+
+
+class ContentSnippet(models.Model):
+    cid = models.CharField(max_length=100, verbose_name='Content Identifier')
+    text = MarkdownxField(verbose_name='Text (MarkDown syntax allowed')
+
+    def __str__(self):
+        return self.cid

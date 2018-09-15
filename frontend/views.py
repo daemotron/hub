@@ -17,6 +17,10 @@ class IndexView(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['news'] = models.NewsItem.objects.filter(publish__exact=True).filter(date__lte=timezone.now())[:3]
+        try:
+            context['greet'] = models.ContentSnippet.objects.get(cid__exact='front_greet')
+        except models.ContentSnippet.DoesNotExist:
+            context['greet'] = None
         return context
 
 
