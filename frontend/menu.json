@@ -2,11 +2,11 @@
   "1": {
     "icon": "fa fa-home",
     "label": "Home",
-    "url": "pages:index"
+    "url": "index:index"
   },
   "2": {
     "icon": "fa fa-envelope",
     "label": "Contact",
-    "url": "pages:contact"
+    "url": "contact:index"
   }
 }

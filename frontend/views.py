@@ -41,8 +41,9 @@ class LegalView(TemplateView):
 @login_required
 def logout_view(request, target=None):
     logout(request)
+    target = request.GET.get('target', None)
     if not target:
-        target = reverse('pages:index')
+        target = reverse('index:index')
     return HttpResponseRedirect(target)
 
 
@@ -58,7 +59,7 @@ def contact(request):
                 )
             }
             r = requests.post(get_setting('skynet_message_url'), data=data)
-            return HttpResponseRedirect(reverse('pages:sent'))
+            return HttpResponseRedirect(reverse('contact:sent'))
     else:
         form = forms.ContactForm()
 
