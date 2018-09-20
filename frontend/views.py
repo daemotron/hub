@@ -1,4 +1,6 @@
 import requests
+from django.contrib.auth import logout
+from django.contrib.auth.decorators import login_required
 from django.urls import reverse
 from django.utils import timezone
 from django.views.generic import ListView, TemplateView
@@ -34,6 +36,14 @@ class PrivacyView(TemplateView):
 
 class LegalView(TemplateView):
     template_name = 'frontend/legal.html'
+
+
+@login_required
+def logout_view(request, target=None):
+    logout(request)
+    if not target:
+        target = reverse('pages:index')
+    return HttpResponseRedirect(target)
 
 
 def contact(request):

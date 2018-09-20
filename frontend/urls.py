@@ -13,4 +13,5 @@ urlpatterns = [
     path('contact/sent/', views.SentView.as_view(), name='sent'),
     path('privacy/', views.PrivacyView.as_view(), name='privacy'),
     path('legal/', views.LegalView.as_view(), name='legal'),
+    path('logout/', views.logout_view, {'target': None}, name='logout')
 ]
