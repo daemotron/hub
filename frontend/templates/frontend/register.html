@@ -1,0 +1,90 @@
+{% extends "frontend/page.html" %}
+{% load static %}
+
+{% block page_title %}Account Registration{% endblock %}
+
+{% block page_content %}
+<form action="{% url 'profile:register' %}" method="post">
+    {% csrf_token %}
+    {% if form.non_field_errors %}
+        <div class="alert alert-warning" role="alert">
+            {% for error in form.non_field_errors %}
+                <strong>{{ error|escape }}</strong><br>
+            {% endfor %}
+        </div>
+    {% endif %}
+    <div class="form-group">
+        <!--<label for="{{ form.username.id_for_label }}">Your name:</label>-->
+        {% if form.username.errors %}
+            <div class="alert alert-warning" role="alert">
+                {% for error in form.username.errors %}
+                    <strong>{{ error|escape }}</strong>
+                {% endfor %}
+            </div>
+        {% endif %}
+        {{ form.username }}
+        <small id="usernameHelpBlock" class="form-text text-muted">
+            Please use exactly the same username as your FSEconomy Game World account.
+        </small>
+    </div>
+    <div class="form-group">
+        <!--<label for="{{ form.email.id_for_label }}">Your email address:</label>-->
+        {% if form.email.errors %}
+            <div class="alert alert-warning" role="alert">
+                {% for error in form.email.errors %}
+                    <strong>{{ error|escape }}</strong><br>
+                {% endfor %}
+            </div>
+        {% endif %}
+        {{ form.email }}
+        <small id="emailHelpBlock" class="form-text text-muted">
+            Your email address is mandatory &ndash; we promise to not abuse it for bothering you in any way, but for
+            certain interactions such as contest participation, we need a way to get in touch with you.
+        </small>
+    </div>
+    <div class="form-group">
+        {% if form.password.errors %}
+            <div class="alert alert-warning" role="alert">
+                {% for error in form.password.errors %}
+                    <strong>{{ error|escape }}</strong><br>
+                {% endfor %}
+            </div>
+        {% endif %}
+        {{ form.password }}
+        <small id="passwordHelpBlock" class="form-text text-muted">
+            Please chose a password strong enough to protect your account &ndash; but we strongly recommend to
+            <strong>not use the same password</strong> as for your FSEconomy Game World account!
+        </small>
+    </div>
+    <div class="form-group">
+        {% if form.pwrepeat.errors %}
+            <div class="alert alert-warning" role="alert">
+                {% for error in form.pwrepeat.errors %}
+                    <strong>{{ error|escape }}</strong><br>
+                {% endfor %}
+            </div>
+        {% endif %}
+        {{ form.pwrepeat }}
+        <small id="passwordRepeatHelpBlock" class="form-text text-muted">
+            Re-confirm your password choice by repeating the password once more &ndash; this way we can be sure your
+            password is not contaminated by errant typing.
+        </small>
+    </div>
+    <div class="form-group">
+        {% if form.captcha.errors %}
+            <div class="alert alert-warning" role="alert">
+                {% for error in form.captcha.errors %}
+                    <strong>{{ error|escape }}</strong><br>
+                {% endfor %}
+            </div>
+        {% endif %}
+        {{ form.captcha }}
+    </div>
+    <div class="alert alert-info" role="alert">
+        <strong>Please note:</strong>
+            Any information shared via this form is subject to our
+            <a href="{% url 'pages:privacy' %}">Privacy Policy</a>.
+    </div>
+    <input type="submit" class="btn btn-primary" value="Submit">
+</form>
+{% endblock %}

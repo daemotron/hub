@@ -26,10 +26,10 @@
                     {% if user.is_authenticated %}
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="dropdownProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fa fa-user"></i> My Profile
+                                <i class="fa fa-user"></i> {{ user.username }}
                             </a>
-                            <div class="dropdown-menu" aria-labelledby="dropdownProfile">
-                                <a class="dropdown-item" href="#">Edit My Profile</a>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownProfile">
+                                <a class="dropdown-item" href="{% url 'profile:index' %}">My Profile</a>
                                 {% if user.is_staff %}
                                 <a class="dropdown-item" href="{% url 'dashboard:index' %}" target="_blank">Dashboard</a>
                                 <a class="dropdown-item" href="{% url 'admin:index' %}" target="_blank">Admin</a>
@@ -75,7 +75,8 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button href="#" class="btn btn-secondary">Register</button>
+                            You don&rsquo;t have an account yet?&nbsp;
+                            <a href="{% url 'profile:register' %}">Register</a> one now!
                             <input type="submit" class="btn btn-primary" value="Submit">
                         </div>
                     </form>
