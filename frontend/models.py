@@ -1,5 +1,8 @@
+import uuid
+
 from django.db import models
 from django.utils import timezone
+from django.contrib.auth.models import User
 from markdownx.models import MarkdownxField
 
 
@@ -36,3 +39,18 @@ class ContentSnippet(models.Model):
 
     def __str__(self):
         return self.cid
+
+
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    fseid = models.BigIntegerField(verbose_name='FSEconomy User ID', blank=True)
+    key = models.CharField(max_length=20, verbose_name='FSEconomy Access Key', default='', blank=True)
+    avatar = models.URLField(verbose_name='Avatar URL', max_length=255, blank=True)
+    valid = models.BooleanField(verbose_name='Validated Profile', default=False)
+    validated = models.DateTimeField(verbose_name='Validation timestamp', blank=True, null=True)
+    token = models.UUIDField(verbose_name='Validation token', default=uuid.uuid4, editable=False, unique=True)
+    created = models.DateTimeField(verbose_name='Account created', auto_now_add=True)
+    updated = models.DateTimeField(verbose_name='Account updated', auto_now=True)
+
+    def __str__(self):
+        return self.user.username

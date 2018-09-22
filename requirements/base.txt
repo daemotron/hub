@@ -6,3 +6,4 @@ django-markdownx==2.0.24
 django-simple-captcha==0.5.9
 requests==2.19.1
 whitenoise==4.1
+xmljson==0.1.9

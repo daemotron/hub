@@ -1,0 +1,155 @@
+{% extends "frontend/page.html" %}
+{% load static %}
+
+{% block page_title %}Your Profile{% endblock %}
+
+{% block page_content %}
+    <form method="post" action="{% url 'profile:index' %}">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col">
+                <h2 class="mb-3">{{ user.username }}</h2>
+            </div>
+        </div>
+        {% if messages %}
+            <div class="row mb-3">
+                <div class="col">
+                    {% for message in messages %}
+                        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                            {{ message }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
+        <div class="row">
+            <div class="col-8">
+                {% if form.non_field_errors %}
+                    <div class="alert alert-warning" role="alert">
+                        {% for error in form.non_field_errors %}
+                            <strong>{{ error|escape }}</strong><br>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+                <div class="card mb-3">
+                    <div class="card-header">
+                        General Settings
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group row">
+                            <label for="{{ form.email.id_for_label }}" class="col-sm-3 col-form-label">{{ form.email.label }}</label>
+                            <div class="col-sm-9">
+                                {% if form.email.errors %}
+                                    <div class="alert alert-warning" role="alert">
+                                        {% for error in form.email.errors %}
+                                            <strong>{{ error|escape }}</strong>
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                                {{ form.email }}
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="{{ form.avatar.id_for_label }}" class="col-sm-3 col-form-label">{{ form.avatar.label }}</label>
+                            <div class="col-sm-9">
+                                {% if form.avatar.errors %}
+                                    <div class="alert alert-warning" role="alert">
+                                        {% for error in form.avatar.errors %}
+                                            <strong>{{ error|escape }}</strong>
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                                {{ form.avatar }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mb-3">
+                    <div class="card-header">
+                        Set New Password
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group row">
+                            <label for="{{ form.password.id_for_label }}" class="col-sm-3 col-form-label">{{ form.password.label }}</label>
+                            <div class="col-sm-9">
+                                {% if form.password.errors %}
+                                    <div class="alert alert-warning" role="alert">
+                                        {% for error in form.password.errors %}
+                                            <strong>{{ error|escape }}</strong>
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                                {{ form.password }}
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="{{ form.pwrepeat.id_for_label }}" class="col-sm-3 col-form-label">{{ form.pwrepeat.label }}</label>
+                            <div class="col-sm-9">
+                                {% if form.pwrepeat.errors %}
+                                    <div class="alert alert-warning" role="alert">
+                                        {% for error in form.pwrepeat.errors %}
+                                            <strong>{{ error|escape }}</strong>
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                                {{ form.pwrepeat }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card mb-3">
+                    <div class="card-header">
+                        Account Validation
+                    </div>
+                    <div class="card-body">
+                        {% if not user.profile.valid %}
+                            <p class="mb-3 text-danger">Your account has not yet been validated.</p>
+                            <p class="mb-3">
+                                Please check your
+                                <a href="http://server.fseconomy.net/paymentlog.jsp" target="_blank">FSE Payment Log</a>
+                                for a payment of v$0.01 made by &ldquo;Stormrose&rdquo;. In the <em>comment</em> column,
+                                you will find a UUID token. Copy the token to the input field below; this will validate
+                                your account.
+                            </p>
+                            <div class="form-group row">
+                                <label for="{{ form.token.id_for_label }}" class="col-sm-3 col-form-label">{{ form.token.label }}</label>
+                                <div class="col-sm-9">
+                                    {% if form.token.errors %}
+                                        <div class="alert alert-warning" role="alert">
+                                            {% for error in form.token.errors %}
+                                                <strong>{{ error|escape }}</strong>
+                                            {% endfor %}
+                                        </div>
+                                    {% endif %}
+                                    {{ form.token }}
+                                </div>
+                            </div>
+                        {% else %}
+                            <p class="mb-3 text-success">
+                                Your account ownership has been validated. Your account can now be used without limitation
+                                for all business purposes.
+                            </p>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-10">
+                        <input type="submit" class="btn btn-primary" value="Update">
+                    </div>
+                </div>
+
+        </div>
+        <div class="col-4">
+            {% if user.profile.avatar %}
+                <img src="{{ user.profile.avatar }}" width="200" height="200" class="rounded float-left" alt="{{ user.username }}">
+            {% else %}
+                <img src="{% static 'img/avatar.png' %}" width="200" height="200" class="rounded float-left" alt="{{ user.username }}">
+            {% endif %}
+        </div>
+    </div>
+</form>
+{% endblock %}
