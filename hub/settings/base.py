@@ -35,7 +35,6 @@ INSTALLED_APPS = [
     'dashboard',
     'frontend',
     'settings',
-    'contest',
     'captcha',
     'markdownx',
     'django.contrib.admin',
