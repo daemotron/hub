@@ -20,6 +20,7 @@ urlpatterns = [
     path('', include('frontend.urls.index')),
     path('accounts/', include('django.contrib.auth.urls')),
     path('admin/', admin.site.urls),
+    path('banner/', include('banner.urls')),
     path('captcha/', include('captcha.urls')),
     path('contact/', include('frontend.urls.contact')),
     path('dashboard/', include('dashboard.urls')),
