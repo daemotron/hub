@@ -7,6 +7,7 @@ from django.contrib.auth.models import User
 from django.http import HttpResponse
 from django.utils import timezone
 from fse.stats import get_stat
+from . import models
 
 
 def draw(request, size, username):
@@ -42,7 +43,14 @@ def draw(request, size, username):
     except User.DoesNotExist:
         user = None
     if user:
-        if user.userstat.last_update < timezone.now() - datetime.timedelta(seconds=3600):
+        try:
+            stat = user.userstat
+            update_flag = False
+        except models.UserStat.DoesNotExist:
+            stat = models.UserStat(user=user)
+            stat.save()
+            update_flag = True
+        if stat.last_update < timezone.now() - datetime.timedelta(seconds=3600) or update_flag:
             data = get_stat(user.profile.key)
             if 'flights' in data:
                 user.userstat.total_flights = data['flights']
