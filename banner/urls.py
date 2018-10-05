@@ -6,5 +6,5 @@ app_name = 'banner'
 
 
 urlpatterns = [
-    path('<str:username>/', views.draw, name='draw'),
+    path('<str:size>/<str:username>/', views.draw, name='draw'),
 ]
