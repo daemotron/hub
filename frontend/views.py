@@ -13,6 +13,7 @@ from django.shortcuts import render
 from fse.payment import issue_payment
 from settings.api import get_setting
 from fse.account import get_account_id
+from banner.models import UserStat
 from . import models
 from . import forms
 
@@ -90,6 +91,8 @@ def register(request):
                 fseid=get_account_id(form.cleaned_data['username'])
             )
             user_profile.save()
+            user_stat = UserStat(user=user)
+            user_stat.save()
             login(request, user)
             issue_payment(get_setting('profile_validation_payment_sender'), user.username, 0.01, user_profile.token)
             return HttpResponseRedirect(reverse('profile:index'))
